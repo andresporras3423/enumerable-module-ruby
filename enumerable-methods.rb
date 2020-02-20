@@ -71,4 +71,14 @@ module Enumerable
     end
     counter
   end
+
+  def my_map
+    return to_enum unless block_given?
+
+    new_array = []
+    my_each do |value|
+      new_array << (yield value)
+    end
+    new_array
+  end
 end

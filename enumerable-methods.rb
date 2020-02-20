@@ -107,4 +107,21 @@ module Enumerable
       return temp_arr.my_inject { |total, a| total.method(value[1]).call(a) } if param == value[0]
     end
   end
+
+  def compare_params(types, params)
+    new_params = Array.new(types.length, nil)
+    i = types.length - 1
+    while i >= 0
+      j = 0
+      while j < params.length
+        if types[i].class == params[j].class
+          new_params[i] = params[j]
+          break
+        end
+        j += 1
+      end
+      i -= 1
+    end
+    new_params
+  end
 end

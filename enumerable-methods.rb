@@ -30,4 +30,13 @@ module Enumerable
     end
     accepted
   end
+
+  def my_all?
+    return (my_all? { |x| !x.nil? }) unless block_given?
+
+    my_each do |value|
+      return false unless yield value
+    end
+    true
+  end
 end

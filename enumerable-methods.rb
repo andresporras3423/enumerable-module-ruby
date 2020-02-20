@@ -81,4 +81,23 @@ module Enumerable
     end
     new_array
   end
+
+  def my_inject(nval = nil, nsym = nil, nproc = nil)
+    temp_arr = to_a
+    params = compare_params([temp_arr[0], :+, proc {}], [nval, nsym, nproc])
+    total = nil
+    temp_arr.unshift(params[0]) unless params[0].nil?
+    return symbol_inject(params[1], temp_arr) unless params[1].nil?
+
+    temp_arr.my_each_with_index do |value, index|
+      total = if index.zero?
+                value
+              elsif params[2].nil?
+                yield total, value
+              else
+                params[2].call(total, value)
+              end
+    end
+    total
+  end
 end

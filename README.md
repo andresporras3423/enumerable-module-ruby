@@ -6,12 +6,12 @@ Second Ruby Microverse Project By Oscar Russi
 
 # Bubble sort on Ruby 
 
-Second Microverse project for Ruby Curriculum
+Second Microverse project for Ruby Course
 
 # What it does
 
 - Extend Enumerable module to add methods which simulate the behavior of other Enumerable methods. 
-- Create my own each method to make work all the other enumerable methods that I created
+- Created my own each method to make work all the other enumerable methods that I created
 - Extending Enumerable module to add more methods that received both arrays and ranges
 - multiply_els in main.rb
 - Using yield and call method as it was required

@@ -1,4 +1,4 @@
-require './enumerable-methods'
+require './enumerable_methods'
 
 def multiply_els(arr)
   rand_method = rand(1..3)

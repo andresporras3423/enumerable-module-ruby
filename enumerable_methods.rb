@@ -49,8 +49,17 @@ module Enumerable
     true
   end
 
-  def my_any?
-    return (my_any? { |x| !x.nil? }) unless block_given?
+  def my_any?(param = nil)
+    unless param == nil
+      if param.class == Class
+        return my_any? {|x| x.class == param}
+      elsif param.class == Regexp
+        return my_any? {|x| x =~ param}
+      else
+        return my_any? {|x| x == param}
+      end
+    end
+    return (my_any? { |x| !x.nil?  && x != false }) unless block_given?
 
     my_each do |value|
       return true if yield value
@@ -59,7 +68,16 @@ module Enumerable
   end
 
   def my_none?
-    return (my_none? { |x| !x.nil? }) unless block_given?
+    unless param == nil
+      if param.class == Class
+        return my_none? {|x| x.class == param}
+      elsif param.class == Regexp
+        return my_none? {|x| x =~ param}
+      else
+        return my_none? {|x| x == param}
+      end
+    end
+    return (my_none? { |x| !x.nil? && x != false }) unless block_given?
 
     my_each do |value|
       return false if yield value

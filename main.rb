@@ -19,7 +19,12 @@ puts multiply_els([2, 4, 5])
 # puts %w[dog door rod blade].my_all?(/d/)
 # puts [1, 1, 1].my_all?(1)
 
-puts [1, 2, true].all?
-puts [1, 2, ""].my_all?(Integer)
-puts %w[dog door rod carlos].my_all?(/d/)
-puts [1, 1, 2].my_all?(1)
+# puts [1, 2, true].all?
+# puts [1, 2, ""].my_all?(Integer)
+# puts %w[dog door rod carlos].my_all?(/d/)
+# puts [1, 1, 2].my_all?(1)
+
+# puts [nil, nil, false].my_any?
+# puts ["", "", 3.2].my_any?(Integer)
+# puts %w[bless clam mus lola].my_any?(/d/)
+# puts [5, 2, 3].my_any?(1)

@@ -32,15 +32,8 @@ module Enumerable
   end
 
   def my_all?(param = nil)
-    unless param.nil?
-      if param.class == Class
-        return my_all? { |x| x.class == param }
-      elsif param.class == Regexp
-        return my_all? { |x| x =~ param }
-      else
-        return my_all? { |x| x == param }
-      end
-    end
+    return param_eval_my_all?(param) unless param.nil?
+
     return (my_all? { |x| !x.nil? && x != false }) unless block_given?
 
     my_each do |value|
@@ -49,16 +42,19 @@ module Enumerable
     true
   end
 
-  def my_any?(param = nil)
-    unless param.nil?
-      if param.class == Class
-        return my_any? { |x| x.class == param }
-      elsif param.class == Regexp
-        return my_any? { |x| x =~ param }
-      else
-        return my_any? { |x| x == param }
-      end
+  def param_eval_my_all?(param)
+    if param.class == Class
+      my_all? { |x| x.class == param }
+    elsif param.class == Regexp
+      my_all? { |x| x =~ param }
+    else
+      my_all? { |x| x == param }
     end
+  end
+
+  def my_any?(param = nil)
+    return param_eval_my_any?(param) unless param.nil?
+
     return (my_any? { |x| !x.nil? && x != false }) unless block_given?
 
     my_each do |value|
@@ -67,22 +63,35 @@ module Enumerable
     false
   end
 
-  def my_none?(param = nil)
-    unless param.nil?
-      if param.class == Class
-        return my_none? { |x| x.class == param }
-      elsif param.class == Regexp
-        return my_none? { |x| x =~ param }
-      else
-        return my_none? { |x| x == param }
-      end
+  def param_eval_my_any?(param)
+    if param.class == Class
+      my_any? { |x| x.class == param }
+    elsif param.class == Regexp
+      my_any? { |x| x =~ param }
+    else
+      my_any? { |x| x == param }
     end
+  end
+
+  def my_none?(param = nil)
+    return param_eval_my_none?(param) unless param.nil?
+
     return (my_none? { |x| !x.nil? && x != false }) unless block_given?
 
     my_each do |value|
       return false if yield value
     end
     true
+  end
+
+  def param_eval_my_none?(param)
+    if param.class == Class
+      my_none? { |x| x.class == param }
+    elsif param.class == Regexp
+      my_none? { |x| x =~ param }
+    else
+      my_none? { |x| x == param }
+    end
   end
 
   def my_count(param = nil)

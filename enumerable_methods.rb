@@ -31,8 +31,17 @@ module Enumerable
     accepted
   end
 
-  def my_all?
-    return (my_all? { |x| !x.nil? }) unless block_given?
+  def my_all? (param = nil)
+    unless param == nil
+      if param.class == Class
+        return my_all? {|x| x.class == param}
+      elsif param.class == Regexp
+        return my_all? {|x| x =~ param}
+      else
+        return my_all? {|x| x == param}
+      end
+    end
+    return (my_all? { |x| !x.nil? && x != false }) unless block_given?
 
     my_each do |value|
       return false unless yield value

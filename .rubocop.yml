@@ -6,7 +6,7 @@ AllCops:
 
   DisplayCopNames: true
 
-Layout/LineLength:
+Metrics/LineLength:
   Max: 120
 Metrics/ModuleLength:
   Max: 200
@@ -34,8 +34,8 @@ Style/DefWithParentheses:
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
 
-Layout/HashAlignment:
-  EnforcedColonStyle: key
+# Layout/HashAlignment:
+#   EnforcedColonStyle: key
 Layout/ExtraSpacing:
   AllowForAlignment: false
 Layout/MultilineMethodCallIndentation:

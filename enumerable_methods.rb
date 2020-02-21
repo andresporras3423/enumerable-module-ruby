@@ -67,7 +67,16 @@ module Enumerable
     false
   end
 
-  def my_none?
+  def my_none?(param = nil)
+    unless param == nil
+      if param.class == Class
+        return my_none? {|x| x.class == param}
+      elsif param.class == Regexp
+        return my_none? {|x| x =~ param}
+      else
+        return my_none? {|x| x == param}
+      end
+    end
     return (my_none? { |x| !x.nil? && x != false }) unless block_given?
 
     my_each do |value|
@@ -76,15 +85,23 @@ module Enumerable
     true
   end
 
-  def my_count(nval = nil)
+  def my_count(param = nil)
     counter = 0
-    if !nval.nil?
-      my_each do |value|
-        counter += 1 if nval == value
+    unless param == nil
+      if param.class == Class
+        return my_count? {|x| x.class == param}
+      elsif param.class == Regexp
+        return my_none? {|x| x =~ param}
+      else
+        return my_none? {|x| x == param}
       end
+    end
+    return (my_none? { |x| !x.nil? && x != false }) unless block_given?
     else
-      my_each do
-        counter += 1
+      my_each do |value|
+        if yield value
+          counter += 1 
+        end
       end
     end
     counter

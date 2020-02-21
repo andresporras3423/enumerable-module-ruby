@@ -28,3 +28,10 @@ puts multiply_els([2, 4, 5])
 # puts ["", "", 3.2].my_any?(Integer)
 # puts %w[bless clam mus lola].my_any?(/d/)
 # puts [5, 2, 3].my_any?(1)
+
+# puts [nil, false, 1].my_none?
+# puts ["", "", 3].my_none?(Integer)
+# puts %w[bless clam dos lola].my_none?(/d/)
+# puts [1, 2, 3].my_none?(1)
+
+puts [1, 2, false].my_count { |element| element.is_a?(Integer) } 

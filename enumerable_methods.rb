@@ -68,15 +68,6 @@ module Enumerable
   end
 
   def my_none?
-    unless param == nil
-      if param.class == Class
-        return my_none? {|x| x.class == param}
-      elsif param.class == Regexp
-        return my_none? {|x| x =~ param}
-      else
-        return my_none? {|x| x == param}
-      end
-    end
     return (my_none? { |x| !x.nil? && x != false }) unless block_given?
 
     my_each do |value|

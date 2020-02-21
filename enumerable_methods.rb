@@ -31,14 +31,14 @@ module Enumerable
     accepted
   end
 
-  def my_all? (param = nil)
-    unless param == nil
+  def my_all?(param = nil)
+    unless param.nil?
       if param.class == Class
-        return my_all? {|x| x.class == param}
+        return my_all? { |x| x.class == param }
       elsif param.class == Regexp
-        return my_all? {|x| x =~ param}
+        return my_all? { |x| x =~ param }
       else
-        return my_all? {|x| x == param}
+        return my_all? { |x| x == param }
       end
     end
     return (my_all? { |x| !x.nil? && x != false }) unless block_given?
@@ -50,16 +50,16 @@ module Enumerable
   end
 
   def my_any?(param = nil)
-    unless param == nil
+    unless param.nil?
       if param.class == Class
-        return my_any? {|x| x.class == param}
+        return my_any? { |x| x.class == param }
       elsif param.class == Regexp
-        return my_any? {|x| x =~ param}
+        return my_any? { |x| x =~ param }
       else
-        return my_any? {|x| x == param}
+        return my_any? { |x| x == param }
       end
     end
-    return (my_any? { |x| !x.nil?  && x != false }) unless block_given?
+    return (my_any? { |x| !x.nil? && x != false }) unless block_given?
 
     my_each do |value|
       return true if yield value
@@ -68,13 +68,13 @@ module Enumerable
   end
 
   def my_none?(param = nil)
-    unless param == nil
+    unless param.nil?
       if param.class == Class
-        return my_none? {|x| x.class == param}
+        return my_none? { |x| x.class == param }
       elsif param.class == Regexp
-        return my_none? {|x| x =~ param}
+        return my_none? { |x| x =~ param }
       else
-        return my_none? {|x| x == param}
+        return my_none? { |x| x == param }
       end
     end
     return (my_none? { |x| !x.nil? && x != false }) unless block_given?
@@ -87,22 +87,11 @@ module Enumerable
 
   def my_count(param = nil)
     counter = 0
-    unless param == nil
-      if param.class == Class
-        return my_count? {|x| x.class == param}
-      elsif param.class == Regexp
-        return my_none? {|x| x =~ param}
-      else
-        return my_none? {|x| x == param}
-      end
-    end
-    return (my_none? { |x| !x.nil? && x != false }) unless block_given?
-    else
-      my_each do |value|
-        if yield value
-          counter += 1 
-        end
-      end
+    return my_count { |x| x == param } unless param.nil?
+    return (my_count { |_x| true }) unless block_given?
+
+    my_each do |value|
+      counter += 1 if yield value
     end
     counter
   end

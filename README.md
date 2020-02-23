@@ -25,7 +25,7 @@ Second Microverse project for Ruby Course
 
 ## Live Demo
 
-[Live Demo](https://repl.it/@yoxter3423/enumerable-module-ruby) (not working until merge with master)
+[Live Demo](https://repl.it/@yoxter3423/enumerable-module-ruby-1)
 
 ## Authors
 

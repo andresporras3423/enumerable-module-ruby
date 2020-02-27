@@ -100,3 +100,4 @@ RSpec.describe Enum do
     end
   end
 end
+

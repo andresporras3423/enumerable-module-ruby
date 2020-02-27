@@ -22,8 +22,36 @@ class Enum
 
   def test_4_my_each
     concat = ''
-    %w[hello hi world oscar angel].my_each {|x| concat = x.length<4 ? concat+x : concat}
+    %w[hello hi world oscar angel].my_each {|x| concat = x.length<4 ? concat + x : concat}
     return concat
+  end
+
+  def test_1_my_each_with_index
+    counter = 0
+    [1, 2, 3, 6, 7].my_each_with_index {|x, i| counter = i % 2 != 0? counter + x : counter}
+    return counter
+  end
+
+  def test_2_my_each_with_index
+    counter = 0
+    [1, 2, 3, 6, 7].my_each_with_index {|x, i| counter = i % 2 == 0? counter + x : counter}
+    return counter
+  end
+
+  def test_1_my_select
+    return %w[hi hello world oscar].my_select {|x| x[0] == 'h' }
+  end
+
+  def test_2_my_select
+    return %w[hi hello world oscar].my_select {|x| x[0] == 'z' }
+  end
+
+  def test_3_my_select
+    return [true, false, true, true].my_select {|x| x == false }
+  end
+  
+  def test_4_my_select
+    return [7, 8, 9, 11].my_select {|x| x == 8 }
   end
 
   def test_1_my_all?
@@ -90,6 +118,22 @@ class Enum
     [1, 2, 3].my_count(1)
   end
 
+  def test_1_my_map
+    [1, 2, 3, 4, 5].my_map{|x| x * 2 }
+  end
+
+  def test_2_my_map
+    [false, true, false, true].my_map {|x| !x }
+  end
+
+  def test_3_my_map
+    %w[hi hello world my name].my_map {|x| x[0] }
+  end
+
+  def test_4_my_map
+    [1, 2, 3, 4, 5].my_map{|x| x + 2 }
+  end
+
 # puts [nil, false, 1].my_count
 # puts ["", "", 3].my_count(Integer)
 # puts %w[bless clam dos lola].my_count(/d/)
@@ -104,6 +148,16 @@ RSpec.describe Enum do
       expect(enum.test_2_my_each).to eql('hello hi world oscar angel ')
       expect(enum.test_3_my_each).to eql(false)
       expect(enum.test_4_my_each).to eql('hi')
+    end
+    it "testing method my_each_with_index" do
+      expect(enum.test_1_my_each_with_index).to eql(8)
+      expect(enum.test_2_my_each_with_index).to eql(11)
+    end
+    it "testing method my_select" do
+      expect(enum.test_1_my_select).to eql(%w[hi hello])
+      expect(enum.test_2_my_select).to eql([])
+      expect(enum.test_3_my_select).to eql([false])
+      expect(enum.test_4_my_select).to eql([8])
     end
     it "testing method my_all?" do
       expect(enum.test_1_my_all?).to eql(false)
@@ -128,6 +182,12 @@ RSpec.describe Enum do
       expect(enum.test_2_my_count).to eql(0)
       expect(enum.test_3_my_count).to eql(0)
       expect(enum.test_4_my_count).to eql(1)
+    end
+    it "testing method my_map" do
+      expect(enum.test_1_my_map).to eql([2, 4, 6, 8, 10])
+      expect(enum.test_2_my_map).to eql([true, false, true, false])
+      expect(enum.test_3_my_map).to eql(%w[h h w m n])
+      expect(enum.test_4_my_map).to eql([3, 4, 5, 6, 7])
     end
   end
 end

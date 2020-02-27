@@ -38,6 +38,18 @@ class Enum
     return counter
   end
 
+  def test_3_my_each_with_index
+    logic = true
+    [true, false, true, true, true].my_each_with_index {|x, i| logic = i % 2 == 0? logic && x : logic || x}
+    return logic
+  end
+
+  def test_4_my_each_with_index
+    concat = 'hello'
+    %w[hi world].my_each_with_index {|x, i| concat = i > 0 ? concat+' '+x : concat}
+    return concat
+  end
+
   def test_1_my_select
     return %w[hi hello world oscar].my_select {|x| x[0] == 'h' }
   end
@@ -134,10 +146,24 @@ class Enum
     [1, 2, 3, 4, 5].my_map{|x| x + 2 }
   end
 
-# puts [nil, false, 1].my_count
-# puts ["", "", 3].my_count(Integer)
-# puts %w[bless clam dos lola].my_count(/d/)
-# puts [1, 2, 3].my_count(1)
+  def test_1_my_inject
+    [1, 2, 3, 4, 5].my_inject(10, :+)
+  end
+
+  def test_2_my_inject
+    product = Proc.new {|total, x| total*x }
+    [1, 2, 3, 4, 5].my_inject(product)
+  end
+
+  def test_3_my_inject
+    product = Proc.new {|total, x| total || x }
+    [true, false, true, true].my_inject(false, product)
+  end
+
+  def test_4_my_inject
+    %w[hello world my name is].my_inject(false) {|total, x| total+' '+x}
+  end
+
 end
 
 RSpec.describe Enum do
@@ -152,6 +178,8 @@ RSpec.describe Enum do
     it "testing method my_each_with_index" do
       expect(enum.test_1_my_each_with_index).to eql(8)
       expect(enum.test_2_my_each_with_index).to eql(11)
+      expect(enum.test_3_my_each_with_index).to eql(true)
+      expect(enum.test_4_my_each_with_index).to eql('hello world')
     end
     it "testing method my_select" do
       expect(enum.test_1_my_select).to eql(%w[hi hello])
@@ -188,6 +216,12 @@ RSpec.describe Enum do
       expect(enum.test_2_my_map).to eql([true, false, true, false])
       expect(enum.test_3_my_map).to eql(%w[h h w m n])
       expect(enum.test_4_my_map).to eql([3, 4, 5, 6, 7])
+    end
+    it "testing method my_inject" do
+      expect(enum.test_1_my_inject).to eql(25)
+      expect(enum.test_2_my_inject).to eql(120)
+      expect(enum.test_3_my_inject).to eql(true)
+      expect(enum.test_4_my_inject).to eql('hello world my name is')
     end
   end
 end

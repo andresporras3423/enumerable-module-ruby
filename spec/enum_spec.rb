@@ -1,6 +1,31 @@
 require_relative '../enumerable_methods'
 
 class Enum
+
+  def test_1_my_each
+    counter = 0
+    [1, 2, 3, 6, 7].my_each {|x| counter = x % 2 == 0 ? counter+1 : counter}
+    return counter
+  end
+
+  def test_2_my_each
+    concat = ''
+    %w[hello hi world oscar angel].my_each {|x| concat += x+' '}
+    return concat
+  end
+
+  def test_3_my_each
+    logic = true
+    [true, false, true, true].my_each {|x| logic  = logic && x}
+    return logic
+  end
+
+  def test_4_my_each
+    concat = ''
+    %w[hello hi world oscar angel].my_each {|x| concat = x.length<4 ? concat+x : concat}
+    return concat
+  end
+
   def test_1_my_all?
     [1, 2, false].my_all?
   end
@@ -74,6 +99,12 @@ end
 RSpec.describe Enum do
   describe "#add" do
     enum = Enum.new
+    it "testing method my_each" do
+      expect(enum.test_1_my_each).to eql(2)
+      expect(enum.test_2_my_each).to eql('hello hi world oscar angel ')
+      expect(enum.test_3_my_each).to eql(false)
+      expect(enum.test_4_my_each).to eql('hi')
+    end
     it "testing method my_all?" do
       expect(enum.test_1_my_all?).to eql(false)
       expect(enum.test_2_my_all?).to eql(true)

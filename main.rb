@@ -15,4 +15,4 @@ end
 
 puts multiply_els([2, 4, 5])
 
-puts ["one", "", "true"].my_any?(/f/)
+puts ['one', '', 'true'].my_any?(/f/)

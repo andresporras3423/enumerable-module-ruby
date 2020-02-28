@@ -1,21 +1,17 @@
-# enumerable-module-ruby
+# enumerable-module-ruby test
 
-Second Ruby Microverse Project By Oscar Russi
+Eight Ruby Microverse Project By Oscar Russi
 
 ![screenshot](./screenshot.png)
 
-# Bubble sort on Ruby 
+# enumerable-module-ruby test
 
-Second Microverse project for Ruby Course
+Eight Microverse project for Ruby Course
 
 # What it does
 
-- Extend Enumerable module to add methods which simulate the behavior of other Enumerable methods. 
-- Created my own each method to make work all the other enumerable methods that I created
-- Extending Enumerable module to add more methods that received both arrays and ranges
-- multiply_els in main.rb
-- Using yield and call method as it was required
-- my_inject method receive the next symbols (+, -, *, /, **, & and ||)
+- test the methods with 4 examples for each method.
+- the methods pass all the tests.
 
 ## Built With
 
@@ -32,6 +28,11 @@ Second Microverse project for Ruby Course
 **Oscar Russi**
 - Github: [@andresporras3423](https://github.com/andresporras3423/)
 - Linkedin: [Oscar Russi](https://www.linkedin.com/in/oscar-andr%C3%A9s-russi-porras-053236167/)
+
+**Ángel Cussi**
+- Github: [@profile](https://github.com/abcussi)
+- Twitter: [@profile](https://twitter.com/thecussi)
+- Linkedin: [profile](https://www.linkedin.com/in/angel-cussi-1b2310174/)
 
 ## 🤝 Contributing
 

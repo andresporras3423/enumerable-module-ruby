@@ -1,0 +1,164 @@
+class Enum
+
+  def test_1_my_each
+    counter = 0
+    [1, 2, 3, 6, 7].my_each {|x| counter = x % 2 == 0 ? counter+1 : counter}
+    return counter
+  end
+
+  def test_2_my_each
+    concat = ''
+    %w[hello hi world oscar angel].my_each {|x| concat += x+' '}
+    return concat
+  end
+
+  def test_3_my_each
+    logic = true
+    [true, false, true, true].my_each {|x| logic  = logic && x}
+    return logic
+  end
+
+  def test_4_my_each
+    concat = ''
+    %w[hello hi world oscar angel].my_each {|x| concat = x.length<4 ? concat + x : concat}
+    return concat
+  end
+
+  def test_1_my_each_with_index
+    counter = 0
+    [1, 2, 3, 6, 7].my_each_with_index {|x, i| counter = i % 2 != 0? counter + x : counter}
+    return counter
+  end
+
+  def test_2_my_each_with_index
+    counter = 0
+    [1, 2, 3, 6, 7].my_each_with_index {|x, i| counter = i % 2 == 0? counter + x : counter}
+    return counter
+  end
+
+  def test_3_my_each_with_index
+    logic = true
+    [true, false, true, true, true].my_each_with_index {|x, i| logic = i % 2 == 0? logic && x : logic || x}
+    return logic
+  end
+
+  def test_4_my_each_with_index
+    concat = 'hello'
+    %w[hi world].my_each_with_index {|x, i| concat = i > 0 ? concat+' '+x : concat}
+    return concat
+  end
+
+  def test_1_my_select
+    return %w[hi hello world oscar].my_select {|x| x[0] == 'h' }
+  end
+
+  def test_2_my_select
+    return %w[hi hello world oscar].my_select {|x| x[0] == 'z' }
+  end
+
+  def test_3_my_select
+    return [true, false, true, true].my_select {|x| x == false }
+  end
+  
+  def test_4_my_select
+    return [7, 8, 9, 11].my_select {|x| x == 8 }
+  end
+
+  def test_1_my_all?
+    [1, 2, false].my_all?
+  end
+
+  def test_2_my_all?
+    [1, 2, 3].my_all?(Integer)
+  end
+
+  def test_3_my_all?
+    %w[dog door rod blade].my_all?(/d/)
+  end
+
+  def test_4_my_all?
+    [1, 1, 1].my_all?(1)
+  end
+
+  def test_1_my_any?
+    [nil, nil, false].my_any?
+  end
+
+  def test_2_my_any?
+    ["", "", 3.2].my_any?(Integer)
+  end
+
+  def test_3_my_any?
+    %w[bless clam dos lola].my_any?(/d/)
+  end
+
+  def test_4_my_any?
+    [5, 2, 3].my_any?(1)
+  end
+
+  def test_1_my_none?
+    [nil, false, 1].my_none?
+  end
+
+  def test_2_my_none?
+    ["", "", 3].my_none?(Integer)
+  end
+
+  def test_3_my_none?
+    %w[bless clam buzz lola].my_none?(/d/)
+  end
+
+  def test_4_my_none?
+    [5, 2, 3].my_none?(1)
+  end
+
+  def test_1_my_count
+    [nil, false, 1].my_count
+  end
+
+  def test_2_my_count
+    ["", "", 3].my_count(Integer)
+  end
+
+  def test_3_my_count
+    %w[bless clam dos lola].my_count(/d/)
+  end
+
+  def test_4_my_count
+    [1, 2, 3].my_count(1)
+  end
+
+  def test_1_my_map
+    [1, 2, 3, 4, 5].my_map{|x| x * 2 }
+  end
+
+  def test_2_my_map
+    [false, true, false, true].my_map {|x| !x }
+  end
+
+  def test_3_my_map
+    %w[hi hello world my name].my_map {|x| x[0] }
+  end
+
+  def test_4_my_map
+    [1, 2, 3, 4, 5].my_map{|x| x + 2 }
+  end
+
+  def test_1_my_inject
+    [1, 2, 3, 4, 5].my_inject(10, :+)
+  end
+
+  def test_2_my_inject
+    product = Proc.new {|total, x| total*x }
+    [1, 2, 3, 4, 5].my_inject(product)
+  end
+
+  def test_3_my_inject
+    product = Proc.new {|total, x| total || x }
+    [true, false, true, true].my_inject(false, product)
+  end
+
+  def test_4_my_inject
+    %w[hello world my name is].my_inject(false) {|total, x| total+' '+x}
+  end
+end

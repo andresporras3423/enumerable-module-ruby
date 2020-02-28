@@ -43,7 +43,7 @@ class Enum
 
   def test_4_my_each_with_index
     concat = 'hello'
-    %w[hi world].my_each_with_index { |x, i| concat = i > 0 ? concat + ' ' + x : concat }
+    %w[hi world].my_each_with_index { |x, i| concat = i.positive? ? concat + ' ' + x : concat }
     concat
   end
 

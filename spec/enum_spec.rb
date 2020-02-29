@@ -4,16 +4,16 @@ require_relative '../enum'
 RSpec.describe Enum do
   let(:enum) { Enum.new }
   describe 'tests method my_each' do
-    it 'tests method my_each' do
+    it 'tests sum of numbers with my_each' do
       expect(enum.test_1_my_each).to eql(2)
     end
-    it 'tests method my_each' do
+    it 'tests string concatenation with my_each' do
       expect(enum.test_2_my_each).to eql('hello hi world oscar angel ')
     end
-    it 'tests method my_each' do
+    it 'tests boolean operation with my_each' do
       expect(enum.test_3_my_each).not_to eql(true)
     end
-    it 'tests method my_each' do
+    it 'tests string concatenation with my_each if condition' do
       expect(enum.test_4_my_each).to eql('hi')
     end
   end

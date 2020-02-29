@@ -46,7 +46,7 @@ RSpec.describe Enum do
     end
   end
   describe 'tests method my_all?' do
-    it 'tests if all the items are different to false or zero. Return must be different to true' do
+    it 'tests if all the items are different to false nil. Return must be different to true' do
       expect(enum.test_1_my_all?).not_to eql(true)
     end
     it 'tests if all items are from integer class' do
@@ -60,30 +60,30 @@ RSpec.describe Enum do
     end
   end
   describe 'tests method my_any?' do
-    it 'tests method my_each_with_index' do
+    it 'tests if any item is different to false and nil' do
       expect(enum.test_1_my_any?).to eql(false)
     end
-    it 'tests method my_each_with_index' do
+    it 'tests if any item is part from integer class' do
       expect(enum.test_2_my_any?).to eql(false)
     end
-    it 'tests method my_each_with_index' do
+    it 'tests if it is not true that any item has the z character' do
       expect(enum.test_3_my_any?).not_to eql(false)
     end
-    it 'tests method my_each_with_index' do
+    it 'tests if any item is equal to 1' do
       expect(enum.test_4_my_any?).to eql(false)
     end
   end
-  describe 'tests method my_none' do
-    it 'tests method my_each_with_index' do
+  describe 'tests method my_none?' do
+    it 'tests if any item is equal to nil or false' do
       expect(enum.test_1_my_none?).not_to eql(true)
     end
-    it 'tests method my_each_with_index' do
+    it 'tests if no item is from integer class' do
       expect(enum.test_2_my_none?).to eql(false)
     end
-    it 'tests method my_each_with_index' do
+    it 'tests if no item is from integer class' do
       expect(enum.test_3_my_none?).to eql(true)
     end
-    it 'tests method my_each_with_index' do
+    it 'tests if no item is equal to 1' do
       expect(enum.test_4_my_none?).to eql(true)
     end
   end

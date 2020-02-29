@@ -18,16 +18,16 @@ RSpec.describe Enum do
     end
   end
   describe 'tests method my_each_with_index' do
-    it 'tests method my_each_with_index' do
+    it 'tests sum of uneven numbers using my_each_with_index' do
       expect(enum.test_1_my_each_with_index).to eql(8)
     end
-    it 'tests method my_each_with_index' do
+    it 'tests sum of even numbers using my_each_with_index' do
       expect(enum.test_2_my_each_with_index).to eql(11)
     end
-    it 'tests method my_each_with_index' do
+    it 'tests boolean operations, using && for even items and || for uneven numbers, using my_each_with_index' do
       expect(enum.test_3_my_each_with_index).not_to eql(false)
     end
-    it 'tests method my_each_with_index' do
+    it 'concat string when index is bigger than zero, using my_each_with_index' do
       expect(enum.test_4_my_each_with_index).to eql('hello world')
     end
   end

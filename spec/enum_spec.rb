@@ -4,58 +4,58 @@ require_relative '../enum'
 RSpec.describe Enum do
   let(:enum) { Enum.new }
   describe 'tests method my_each' do
-    it 'tests sum of numbers with my_each' do
+    it 'tests sum of numbers' do
       expect(enum.test_1_my_each).to eql(2)
     end
-    it 'tests string concatenation with my_each' do
+    it 'tests string concatenation' do
       expect(enum.test_2_my_each).to eql('hello hi world oscar angel ')
     end
-    it 'tests boolean operation with my_each' do
+    it 'tests boolean operation, return must be different to true' do
       expect(enum.test_3_my_each).not_to eql(true)
     end
-    it 'tests string concatenation with my_each if condition' do
+    it 'tests string concatenation if condition' do
       expect(enum.test_4_my_each).to eql('hi')
     end
   end
   describe 'tests method my_each_with_index' do
-    it 'tests sum of uneven numbers using my_each_with_index' do
+    it 'tests sum of uneven numbers' do
       expect(enum.test_1_my_each_with_index).to eql(8)
     end
-    it 'tests sum of even numbers using my_each_with_index' do
+    it 'tests sum of even numbers' do
       expect(enum.test_2_my_each_with_index).to eql(11)
     end
-    it 'tests boolean operations, using && for even items and || for uneven numbers, using my_each_with_index' do
+    it 'tests boolean operations, using && for even items and || for uneven numbers, return different to false' do
       expect(enum.test_3_my_each_with_index).not_to eql(false)
     end
-    it 'concat string when index is bigger than zero, using my_each_with_index' do
+    it 'concat string when index is bigger than zero' do
       expect(enum.test_4_my_each_with_index).to eql('hello world')
     end
   end
   describe 'tests method my_select' do
-    it 'tests method my_each_with_index' do
+    it 'selects from an array of strings, when first character is zero' do
       expect(enum.test_1_my_select).to eql(%w[hi hello])
     end
-    it 'tests method my_each_with_index' do
-      expect(enum.test_2_my_select).to eql([])
+    it 'select where last character of the item is a vowel' do
+      expect(enum.test_2_my_select).to eql(%w[hi hello])
     end
-    it 'tests method my_each_with_index' do
+    it 'selects when items is equal to false, return must be different to [true]' do
       expect(enum.test_3_my_select).not_to eql([true])
     end
-    it 'tests method my_each_with_index' do
+    it 'selects when item is less than or equal to 8' do
       expect(enum.test_4_my_select).to eql([8])
     end
   end
   describe 'tests method my_all?' do
-    it 'tests method my_each_with_index' do
+    it 'tests if all the items are different to false or zero. Return must be different to true' do
       expect(enum.test_1_my_all?).not_to eql(true)
     end
-    it 'tests method my_each_with_index' do
+    it 'tests if all items are from integer class' do
       expect(enum.test_2_my_all?).to eql(true)
     end
-    it 'tests method my_each_with_index' do
+    it 'tests if all items have a z character' do
       expect(enum.test_3_my_all?).to eql(true)
     end
-    it 'tests method my_each_with_index' do
+    it 'tests if all numbers are equal to 1' do
       expect(enum.test_4_my_all?).to eql(true)
     end
   end

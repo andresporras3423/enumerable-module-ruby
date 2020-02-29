@@ -52,7 +52,7 @@ class Enum
   end
 
   def test_2_my_select
-    %w[hi hello world oscar].my_select { |x| x[0] == 'z' }
+    %w[hi hello world oscar].my_select { |x| x[x.length-1] =~ /[aeiou]/ }
   end
 
   def test_3_my_select
@@ -60,7 +60,7 @@ class Enum
   end
 
   def test_4_my_select
-    [7, 8, 9, 11].my_select { |x| x == 8 }
+    [17, 8, 9, 11].my_select { |x| x <= 8 }
   end
 
   def test_1_my_all?

@@ -52,7 +52,7 @@ class Enum
   end
 
   def test_2_my_select
-    %w[hi hello world oscar].my_select { |x| x[x.length-1] =~ /[aeiou]/ }
+    %w[hi hello world oscar].my_select { |x| x[x.length - 1] =~ /[aeiou]/ }
   end
 
   def test_3_my_select

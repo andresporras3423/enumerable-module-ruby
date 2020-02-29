@@ -3,7 +3,7 @@ require_relative '../enum'
 
 RSpec.describe Enum do
   let(:enum) { Enum.new }
-  describe 'my_each' do
+  describe 'tests method my_each' do
     it 'tests method my_each' do
       expect(enum.test_1_my_each).to eql(2)
     end
@@ -17,7 +17,7 @@ RSpec.describe Enum do
       expect(enum.test_4_my_each).to eql('hi')
     end
   end
-  describe 'my_each_with_index' do
+  describe 'tests method my_each_with_index' do
     it 'tests method my_each_with_index' do
       expect(enum.test_1_my_each_with_index).to eql(8)
     end
@@ -31,7 +31,7 @@ RSpec.describe Enum do
       expect(enum.test_4_my_each_with_index).to eql('hello world')
     end
   end
-  describe 'my_select' do
+  describe 'tests method my_select' do
     it 'tests method my_each_with_index' do
       expect(enum.test_1_my_select).to eql(%w[hi hello])
     end
@@ -45,7 +45,7 @@ RSpec.describe Enum do
       expect(enum.test_4_my_select).to eql([8])
     end
   end
-  describe 'my_all?' do
+  describe 'tests method my_all?' do
     it 'tests method my_each_with_index' do
       expect(enum.test_1_my_all?).not_to eql(true)
     end
@@ -59,7 +59,7 @@ RSpec.describe Enum do
       expect(enum.test_4_my_all?).to eql(true)
     end
   end
-  describe 'my_any?' do
+  describe 'tests method my_any?' do
     it 'tests method my_each_with_index' do
       expect(enum.test_1_my_any?).to eql(false)
     end
@@ -73,7 +73,7 @@ RSpec.describe Enum do
       expect(enum.test_4_my_any?).to eql(false)
     end
   end
-  describe 'my_none' do
+  describe 'tests method my_none' do
     it 'tests method my_each_with_index' do
       expect(enum.test_1_my_none?).not_to eql(true)
     end
@@ -87,7 +87,7 @@ RSpec.describe Enum do
       expect(enum.test_4_my_none?).to eql(true)
     end
   end
-  describe 'my_count' do
+  describe 'tests method my_count' do
     it 'tests method my_each_with_index' do
       expect(enum.test_1_my_count).not_to eql(30)
     end
@@ -101,7 +101,7 @@ RSpec.describe Enum do
       expect(enum.test_4_my_count).to eql(1)
     end
   end
-  describe 'my_map' do
+  describe 'tests method my_map' do
     it 'tests method my_each_with_index' do
       expect(enum.test_1_my_map).to eql([2, 4, 6, 8, 10])
     end
@@ -115,7 +115,7 @@ RSpec.describe Enum do
       expect(enum.test_4_my_map).to eql([3, 4, 5, 6, 7])
     end
   end
-  describe 'my_inject' do
+  describe 'tests method my_inject' do
     it 'tests method my_each_with_index' do
       expect(enum.test_1_my_inject).to eql(25)
     end

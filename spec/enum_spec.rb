@@ -88,30 +88,30 @@ RSpec.describe Enum do
     end
   end
   describe 'tests method my_count' do
-    it 'tests method my_each_with_index' do
-      expect(enum.test_1_my_count).not_to eql(30)
+    it 'tests that number of items is not 1' do
+      expect(enum.test_1_my_count).not_to eql(1)
     end
-    it 'tests method my_each_with_index' do
+    it 'tests that not item is equals to Integer class' do
       expect(enum.test_2_my_count).to eql(0)
     end
-    it 'tests method my_each_with_index' do
+    it 'tests that not item is equals to /d/ regex expression' do
       expect(enum.test_3_my_count).to eql(0)
     end
-    it 'tests method my_each_with_index' do
+    it 'counts item which are equal to 1' do
       expect(enum.test_4_my_count).to eql(1)
     end
   end
   describe 'tests method my_map' do
-    it 'tests method my_each_with_index' do
+    it 'multiply by 2 each element of the array' do
       expect(enum.test_1_my_map).to eql([2, 4, 6, 8, 10])
     end
-    it 'tests method my_each_with_index' do
+    it 'return an array with the negation of each boolean expression' do
       expect(enum.test_2_my_map).to eql([true, false, true, false])
     end
-    it 'tests method my_each_with_index' do
+    it 'return an array with the first character of each item' do
       expect(enum.test_3_my_map).not_to eql(%w[h h w m n i])
     end
-    it 'tests method my_each_with_index' do
+    it 'sum 2 to each element of the array' do
       expect(enum.test_4_my_map).to eql([3, 4, 5, 6, 7])
     end
   end

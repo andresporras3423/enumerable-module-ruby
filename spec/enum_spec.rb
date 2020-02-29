@@ -116,16 +116,16 @@ RSpec.describe Enum do
     end
   end
   describe 'tests method my_inject' do
-    it 'tests method my_each_with_index' do
+    it 'tests sum with initial value of 10, using a symbol' do
       expect(enum.test_1_my_inject).to eql(25)
     end
-    it 'tests method my_each_with_index' do
+    it 'tests multiplication of all items, using proc' do
       expect(enum.test_2_my_inject).not_to eql(20)
     end
-    it 'tests method my_each_with_index' do
+    it 'tests boolean operation with proc and initial value' do
       expect(enum.test_3_my_inject).to eql(true)
     end
-    it 'tests method my_each_with_index' do
+    it 'tests concatenation of all items using a block' do
       expect(enum.test_4_my_inject).to eql('hello world my name is')
     end
   end
